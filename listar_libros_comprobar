@@ -1,0 +1,32 @@
+<?php
+--INTEGRADORA libros, editar disponibilidad, eliminar
+include_once 'conexion.php';
+$sql="select * from libros";
+$stmt=$base_de_datos->prepare($sql);
+$stmt->execute();
+?>
+
+<table class="table">
+    <tr>
+        <th>Nombre de libro</th>
+        <th>Autor</th>
+        
+</tr>
+
+<?php
+while($rs-$stmt->fetchObject()){
+    ?>
+    <tr>
+        <td><?php echo $rs->nombre_libro; ?></td>
+        <td><?php echo $rs->nombre_autor; ?></td>
+        
+        <td><a href="editar.php?$dispon-<?php echo $rs->$dispon?>" calss="btn-dark"><(a></td>
+        <td><a href="eliminar.php?$dispon-<?php echo $rs->$dispon?></a>
+</tr>
+<?php
+}
+?>
+</table>
+<?php
+include_once 'pie.php';
+?>
